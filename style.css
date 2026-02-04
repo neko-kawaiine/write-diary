@@ -1,84 +1,69 @@
-* { box-sizing: border-box; }
-
 body {
-  font-family: Arial, sans-serif;
-  background:#f7f7f7;
-  color:#2c3e50;
-  margin:0;
-  padding:20px;
+  font-family: "Segoe UI", sans-serif;
+  background: #f9f9f9;
+  margin:0; padding:0;
+}
+.container { max-width: 700px; margin: 20px auto; text-align: center; }
+h1 { margin-bottom: 15px; color: #333; }
+.screen.hidden { display: none; }
+
+/* カレンダー */
+.calendar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+.calendar-nav button {
+  padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer;
+  background: #555; color: #fff; font-weight: bold;
+}
+.calendar-nav button:hover { background: #333; }
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 50px);
+  gap: 8px;
+  justify-content: center;
 }
 
-h1,h2,h3{text-align:center;}
-
-.calendar-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
+.day {
+  width: 50px; height: 50px; display: flex; justify-content:center; align-items:center;
+  border-radius:50%; background:#fff; cursor:pointer; border:1px solid #ccc; transition:0.2s;
 }
-.calendar-title{font-size:1.7rem;font-weight:bold;}
+.day:hover { background: #e0e0e0; }
+/* 感情カラー */
+.day.happy { background:#ffe066; }
+.day.sad { background:#74c0fc; }
+.day.angry { background:#ff6b6b; }
+.day.excited { background:#ff922b; }
+.day.tired { background:#adb5bd; }
+.day.calm { background:#63e6be; }
 
-.nav-btn{
-  padding:6px 12px;
-  border:none;
-  border-radius:5px;
-  background:#3498db;
-  color:#fff;
-  cursor:pointer;
+/* 曜日 */
+#calendar div.weekday {
   font-weight:bold;
-}
-.nav-btn:hover{background:#2980b9;}
-
-#weekdayHeader, #calendar{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:0;
-}
-#weekdayHeader div, #calendar div{
   text-align:center;
-  height:40px;
-  line-height:40px;
-}
-#weekdayHeader div{font-weight:bold;}
-#calendar div{
-  width:40px;
-  border:1px solid #ccc;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:0.9rem;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-#calendar div.today{border:2px solid #e74c3c;}
-
-#diaryText{
-  width:100%;
-  min-height:150px;
-  margin-top:10px;
-  padding:8px;
-  font-size:1rem;
-  border-radius:5px;
-  border:1px solid #ccc;
 }
 
-#dateModal{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.5);
-  z-index:1000;
-}
-.modalContent{
-  background:#fff;
-  padding:20px;
-  border-radius:10px;
-  max-width:350px;
-}
+/* ボタンエリア */
+.button-area { margin-top:10px; display:flex; justify-content:center; gap:10px; }
+.button-area button { padding:8px 14px; border-radius:6px; border:none; cursor:pointer; background:#555; color:white; }
+.button-area button:hover { background:#333; }
 
-#modalDates button{
-  margin:3px;
-}
+/* 日記画面 */
+.diary-card { background:#fff; padding:15px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.15); margin-top:10px; }
+textarea { width:100%; height:120px; border-radius:8px; border:1px solid #ccc; padding:8px; font-size:14px; resize:none; }
+textarea.goal { background:#d3f9d8; }
+.counter-area { text-align:right; margin-top:5px; font-weight:bold; }
+.emotion-area { margin:8px 0; }
+
+/* アナライズ */
+#dictionary { text-align:left; padding:5px; max-height:400px; overflow-y:auto; }
+.letter { font-weight:bold; margin-top:10px; }
+.word { margin-left:10px; cursor:pointer; padding:2px; }
+.word:hover { background:#f0f0f0; border-radius:4px; }
+.dates { margin-left:20px; margin-top:3px; display:none; }
+.dates button { margin:2px; padding:2px 5px; font-size:12px; border-radius:4px; border:none; cursor:pointer; background:#555; color:white; }
+.dates button:hover { background:#333; }
